@@ -23,10 +23,10 @@ namespace WpfApp1
     {
         public MainWindow()
         {
-            Updater.GitHubRepo = "/mzghm/publishtest";
+            Updater.GitHubRepo = "/mzghm/test";
             //if (Updater.AutoUpdate(args))
             //    return;
-            Updater.Update(new Version(1, 0, 0, 1));
+            Updater.Update(new Version(1, 0, 0, 5));
             InitializeComponent();
         }
 

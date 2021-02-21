@@ -53,11 +53,10 @@ namespace AutoUpdate
 		}
 		static IDictionary<Version,Uri> _GetVersionUrls()
 		{
+			//string regexStr = @"\/releases\/download\/Refresh.v[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+.*\.zip";
+			string regexStr = @"\/archive\/Refresh.v[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+.*\.zip";
+			string pattern = string.Concat(Regex.Escape(GitHubRepo), regexStr);
 
-			string pattern =
-					string.Concat(
-						Regex.Escape(GitHubRepo), 
-						@"\/releases\/download\/Refresh.v[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+.*\.zip");
 
 			Regex urlMatcher = new Regex(pattern, RegexOptions.CultureInvariant | RegexOptions.Compiled);
 			var result = new Dictionary<Version, Uri>();
@@ -72,12 +71,14 @@ namespace AutoUpdate
 				Debug.WriteLine("Error fetching repo: "+ex.Message);
 				return result;
 			}
+			StringBuilder sb = new StringBuilder();
 			using (var sr = new StreamReader(wrs.GetResponseStream()))
 			{
 				string line;
 				while (null != (line = sr.ReadLine()))
 				{
 					var match = urlMatcher.Match(line);
+				sb.AppendLine(line);
 					if (match.Success)
 					{
 						var uri = new Uri(string.Concat("https://github.com",match.Value));
@@ -88,6 +89,7 @@ namespace AutoUpdate
 					}
 				}
 			}
+			Console.WriteLine(sb.ToString());
 			return result;
 		}
 		public static bool HasUpdate {

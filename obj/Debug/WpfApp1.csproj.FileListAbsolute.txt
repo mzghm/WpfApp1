@@ -14,3 +14,4 @@ E:\code\C#\3.其他\WpfApp1\obj\Debug\WpfApp1.csproj.GenerateResource.cache
 E:\code\C#\3.其他\WpfApp1\obj\Debug\WpfApp1.csproj.CoreCompileInputs.cache
 E:\code\C#\3.其他\WpfApp1\obj\Debug\WpfApp1.exe
 E:\code\C#\3.其他\WpfApp1\obj\Debug\WpfApp1.pdb
+E:\code\C#\3.其他\WpfApp1\obj\Debug\WpfApp1.csprojAssemblyReference.cache
